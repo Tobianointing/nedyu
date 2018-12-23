@@ -1,3 +1,10 @@
+.meetups-title-div{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2%;
+  font-size: 18px;
+  color: #00AEFF;
+}
 .meetup-div{
   margin-top: 20px;
   min-height: 160px;
@@ -177,10 +184,17 @@
 
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
+  .meetups-title-div{
+    display: block;
+  }
+  .meetups-title-div p{
+    margin-top: 2%;
+  }
   .meetup-div{
     margin-top: 20px;
-    min-height: 360px!important;
-    height: 100%;
+    min-height: 430px!important;
+    height: 100%!important;
+    /* height: 100%; */
     padding: 10px 30px 30px 10px;
     /* box-shadow:  1px 2px 4px #c4c4c4; */
   }
@@ -301,6 +315,13 @@
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
+  .meetup-div{
+    margin-top: 20px;
+    min-height: 125px!important;
+    height: 100%;
+    padding: 10px 30px 30px 10px;
+    /* box-shadow:  1px 2px 4px #c4c4c4; */
+  }
   .sm-hide{
     display: none;
   }
