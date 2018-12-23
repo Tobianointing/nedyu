@@ -4,7 +4,7 @@
 
 .content .auth .card,
 .content .auth-signup .card{
-  min-width: 400px;
+  min-width: 350px;
   max-width: 650px;
   min-height: 200px;
   background-color: #FFFFFF;
@@ -187,6 +187,10 @@ label{
 
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
+  .auth-content{
+    height: 100%;
+    padding: 5% 0%;
+  }
   .table-div{
     padding: 5px 0px 100px;
     overflow-y: visible;
