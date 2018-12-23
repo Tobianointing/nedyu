@@ -1,0 +1,9 @@
+.navbar{
+  height: 10vh;
+  padding: 0 2%;
+}
+
+.navbar a{
+  color: #FFFFFF;
+  text-decoration: none;
+}
