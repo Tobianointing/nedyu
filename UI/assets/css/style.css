@@ -4,7 +4,7 @@
 
 .content .auth .card,
 .content .auth-signup .card{
-  min-width: 350px;
+  min-width: 300px;
   max-width: 650px;
   min-height: 200px;
   background-color: #FFFFFF;
