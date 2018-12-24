@@ -127,7 +127,49 @@
 
     </div>
 
-    
+    <div id="addTagModal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close"  id="close-2" >&times;</span>
+          <h2>&nbsp;</h2>
+        </div>
+        <div class="modal-body">
+          <p>Choose Tag</p>
+          <select class="" name="">
+            <option value="">Technology</option>
+            <option value="">Health</option>
+          </select>
+        </div>
+        <div class="modal-footer d-flex justify-content-between">
+          <button type="button" class="btn btn-red">Cancel</button>
+          <button type="button" class="btn btn-blue">Add</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="addImageModal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close" id="close-3" >&times;</span>
+          <h2>&nbsp;</h2>
+        </div>
+        <div class="modal-body">
+          <label for="meetupImage">Choose Image</label>
+          <input type="file" name="meetupImage" value="" id="meetupImage" hidden>
+        </div>
+        <div class="modal-footer d-flex justify-content-between">
+          <button type="button" class="btn btn-red">Cancel</button>
+          <button type="button" class="btn btn-blue">Add</button>
+        </div>
+      </div>
+
+    </div>
+
     <div id="createMeetupModal" class="modal">
 
       <!-- Modal content -->
