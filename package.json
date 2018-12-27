@@ -1,0 +1,29 @@
+{
+  "name": "questioner",
+  "version": "1.0.0",
+  "description": "An app to crowd-source questions for a meetup.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NedyUdombat/Questioner.git"
+  },
+  "keywords": [
+    "Questioner",
+    "Question",
+    "Meetup",
+    "Andela"
+  ],
+  "author": "Edidiong Udombat",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NedyUdombat/Questioner/issues"
+  },
+  "homepage": "https://github.com/NedyUdombat/Questioner#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
