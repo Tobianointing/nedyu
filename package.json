@@ -35,6 +35,6 @@
     "mocha": "^5.2.0"
   },
   "directories": {
-    "test" : "test"
+    "test": "test"
   }
 }
