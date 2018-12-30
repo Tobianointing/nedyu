@@ -6,3 +6,4 @@ An app to crowd-source questions for a meetup.
 [![Maintainability](https://api.codeclimate.com/v1/badges/04aa1cdcac75f7879189/maintainability)](https://codeclimate.com/github/NedyUdombat/Questioner/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/04aa1cdcac75f7879189/test_coverage)](https://codeclimate.com/github/NedyUdombat/Questioner/test_coverage)
 [![Coverage Status](https://coveralls.io/repos/github/NedyUdombat/Questioner/badge.svg?branch=develop)](https://coveralls.io/github/NedyUdombat/Questioner?branch=develop)
+
