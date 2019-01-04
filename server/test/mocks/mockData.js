@@ -1,12 +1,12 @@
 const mockMeetupDetails = {
     validMeetup : {
-    username: 'admin',
-    organizer: 'DevFest',
-    topic: 'Web Accessibility',
-    happeningOn: '12/12/12',
-    location: 'Uyo, Akwa Ibom State',
-    Tags: ['Tech', 'Edu'],
-    images: ['jpeg.png', 'nn.jpg']
+        username: 'admin',
+        organizer: 'DevFest',
+        topic: 'Web Accessibility',
+        happeningOn: '12/12/12',
+        location: 'Uyo, Akwa Ibom State',
+        Tags: ['Tech', 'Edu'],
+        images: ['jpeg.png', 'nn.jpg']
 
     },
     emptyFieldMeetup : {
@@ -33,13 +33,10 @@ const mockMeetupDetails = {
 
 const mockQuestionDetails =  {
   validQuestion :  {
-    id: 1,
-    createdOn: new Date(),
-    createdBy: 2,
-    meetup: 2,
+    user : "nedyy",
+    meetup: "Web Accessibility",
     title: 'GFW not working?',
-    body: 'why is GFW not working when I insert TYF in the config file?',
-    votes: 25,
+    body: 'why is GFW not working when I insert TYF in the config file?'
   },
 };
 
