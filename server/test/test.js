@@ -1,24 +1,25 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../server';
-import { mockMeetupDetails, mockQuestionDetails, mockRSVPDetails, mockVoteDetails } from './mocks/mockData'
+import { mockMeetupDetails, mockQuestionDetails, mockRSVPDetails, mockVoteDetails, mockUserDetails } from './mocks/mockData'
 
 //config chai to use expect
 chai.use(chaiHttp);
 const { expect } = chai;
 
 //deconstructure all mock data
-const { validMeetup, emptyFieldMeetup, createdMeetup } = mockQuestionDetails;
-const { validQuestion } = mockMeetupDetails;
+const { validMeetup, emptyFieldMeetup, createdMeetup } = mockMeetupDetails;
+const { validQuestion } = mockQuestionDetails;
 const { validRsvp } = mockRSVPDetails;
 const { validVoter } = mockVoteDetails;
+const { adminUser, normalUser } = mockUserDetails;
 
 describe('Questioner Server', () => {
 	describe('GET /', () => {
 
     it('should respond with status code 200', (done) => {
       chai.request(app)
-      .get('/')
+      .get('/api/v1')
       .set('Accept', 'application/json')
       .end((err, res) => {
         expect(res.status).to.equal(200);
@@ -35,7 +36,6 @@ describe('Questioner Server', () => {
       	if (err) return done(err);
         expect(res.status).to.equal(200);
         expect(res.body.message).to.eql('Successfully retrieved all meetups');
-        expect(res.body.data).to.equal([]);
         done();
       });
     });
@@ -48,12 +48,11 @@ describe('Questioner Server', () => {
       	if (err) return done(err);
         expect(res.status).to.equal(200);
         expect(res.body.message).to.eql('Successfully retrieved specific meetup');
-        expect(res.body.data).to.equal({});
         done();
       });
     });
 
-    it('/api/v1/meetups/upcoming should respond with status code 200 and retrieve all upcoming meetup', (done) => {
+    it('/api/v1/meetups/upcoming should respond with status code 20 and retrieve all upcoming meetup', (done) => {
       chai.request(app)
       .get('/api/v1/meetups/upcoming')
       .set('Accept', 'application/json')
@@ -61,7 +60,6 @@ describe('Questioner Server', () => {
       	if (err) return done(err);
         expect(res.status).to.equal(200);
         expect(res.body.message).to.eql('Successfully retrieved all upcoming meetups');
-        expect(res.body.data).to.equal([]);
         done();
       });
     });
@@ -70,21 +68,20 @@ describe('Questioner Server', () => {
 
 	describe('POST /', () => {
 	
-    it('/api/v1/meetups should respond with status code 200 and create a meetup', (done) => {
+    it('/api/v1/meetups should respond with status code 201 and create a meetup', (done) => {
       chai.request(app)
       .post('/api/v1/meetups')
       .set('Accept', 'application/json')
       .send(validMeetup)
       .end((err, res) => {
-      	if (err) return done(err);
+        if (err) return done(err);
         expect(res.status).to.equal(201);
         expect(res.body.message).to.eql('Meetup successfully created');
-        expect(res.body.data).to.equal({});
         done();
       });
     });
 
-    it('/api/v1/questions should respond with status code 200 and retrieve specific meetup', (done) => {
+    it('/api/v1/questions should respond with status code 200 and ask a question', (done) => {
       chai.request(app)
       .get('/api/v1/questions')
       .set('Accept', 'application/json')
@@ -93,7 +90,6 @@ describe('Questioner Server', () => {
       	if (err) return done(err);
         expect(res.status).to.equal(200);
         expect(res.body.message).to.eql('Question asked successfully');
-        expect(res.body.data).to.equal({});
         done();
       });
     });
@@ -107,7 +103,6 @@ describe('Questioner Server', () => {
       	if (err) return done(err);
         expect(res.status).to.equal(201);
         expect(res.body.message).to.eql('Rsvp meetup successful');
-        expect(res.body.data).to.equal({});
         done();
       });
     });
@@ -125,7 +120,6 @@ describe('Questioner Server', () => {
       	if (err) return done(err);
         expect(res.status).to.equal(200);
         expect(res.body.message).to.eql('Upvote successful');
-        expect(res.body.data).to.equal({});
         done();
       });
     });
@@ -139,7 +133,6 @@ describe('Questioner Server', () => {
       	if (err) return done(err);
         expect(res.status).to.equal(200);
         expect(res.body.message).to.eql('Downvote successful');
-        expect(res.body.data).to.equal({});
         done();
       });
     });
