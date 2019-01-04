@@ -3,7 +3,7 @@ import MeetupController from '../dummy/dummyController/meetup';
 import QuestionController from '../dummy/dummyController/question';
 
 // deconstructure controllers
-const { createMeetup } = MeetupController;
+const { getAllMeetups, getSingleMeetup, createMeetup } = MeetupController;
 const { createQuestion } = QuestionController;
 
 const router = Router();
@@ -14,6 +14,9 @@ router.get('/', (req, res) => {
 });
 
 // meetup endpoints
+router.get('/meetups', getAllMeetups);
+router.get('/meetup/:id', getSingleMeetup);
+
 router.post('/meetups', createMeetup);
 
 // question endpoints
