@@ -34,6 +34,36 @@ class MeetupController {
     });
   }
 
+  static getUpcomingMeetups(req, res) {
+    const currentDate = new Date();
+    const upcomingMeetups = [];
+    for (let meetup of dummyMeetup) {
+      const happeningOn = new Date(meetup.happeningOn);
+      if (happeningOn.getFullYear() === currentDate.getFullYear()) {
+        if ( happeningOn.getMonth() > currentDate.getMonth()) {
+          upcomingMeetups.push(meetup);
+        } else if (happeningOn.getMonth() === currentDate.getMonth()) {
+          if (happeningOn.getDate() > currentDate.getDate()) {
+            upcomingMeetups.push(meetup);
+          }
+        }
+      } else if(happeningOn.getFullYear() > currentDate.getFullYear()){
+        upcomingMeetups.push(meetup);
+      } 
+    }
+    if (upcomingMeetups.length === 0) {
+      return res.status(404).json({
+        status: 404,
+        message: 'There are no upcoming meetups',
+      });
+    }
+    return res.status(200).json({
+      status: 200,
+      message: 'Successfully retrieved all upcoming meetups',
+      data: upcomingMeetups,
+    });
+  }
+
   static createMeetup(req, res) {
     const { organizer, topic, happeningOn, location, tags, images, username } = req.body;
     const fields = { organizer, topic, happeningOn, location, username };
