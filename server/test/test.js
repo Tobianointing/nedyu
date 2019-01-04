@@ -113,7 +113,7 @@ describe('Questioner Server', () => {
 	
     it('/api/v1/question/<question-id>/upvote should respond with status code 200 and upvote a question', (done) => {
       chai.request(app)
-      .post('/api/v1/questions/1/upvote')
+      .patch('/api/v1/questions/1/upvote')
       .set('Accept', 'application/json')
       .send(validVoter)
       .end((err, res) => {
