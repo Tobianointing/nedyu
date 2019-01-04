@@ -4,7 +4,7 @@ import QuestionController from '../dummy/dummyController/question';
 
 // deconstructure controllers
 const { getAllMeetups, getSingleMeetup, getUpcomingMeetups, createMeetup } = MeetupController;
-const { createQuestion, upVote } = QuestionController;
+const { createQuestion, upVote, downVote } = QuestionController;
 
 const router = Router();
 
@@ -23,5 +23,6 @@ router.post('/meetups', createMeetup);
 // question endpoints
 router.post('/questions', createQuestion);
 router.patch('/questions/:id/upvote', upVote);
+router.patch('/questions/:id/downvote', downVote);
 
 export default router;
