@@ -6,9 +6,9 @@
   "scripts": {
     "build": "babel server -d dist",
     "start:dev": "nodemon --exec babel-node --presets babel-preset-env ./server/server.js",
-    "start": "npm run build &&  nodemon ./dist/server.js",
+    "start": "npm run build &&  node ./dist/server.js",
     "test": "nyc mocha --exit --timeout 10000 ./server/test/**/*.js --compilers js:babel-core/register",
-    "babel-node": "babel-node app --presets=env",
+    "babel-node": "babel-node server --presets=env",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
   },
