@@ -1,8 +1,10 @@
 import { Router } from 'express';
 import MeetupController from '../dummy/dummyController/meetup';
+import QuestionController from '../dummy/dummyController/question';
 
 // deconstructure controllers
 const { createMeetup } = MeetupController;
+const { createQuestion } = QuestionController;
 
 const router = Router();
 
@@ -13,5 +15,8 @@ router.get('/', (req, res) => {
 
 // meetup endpoints
 router.post('/meetups', createMeetup);
+
+// question endpoints
+router.post('/questions', createQuestion);
 
 export default router;

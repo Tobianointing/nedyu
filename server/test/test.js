@@ -81,14 +81,14 @@ describe('Questioner Server', () => {
       });
     });
 
-    it('/api/v1/questions should respond with status code 200 and ask a question', (done) => {
+    it('/api/v1/questions should respond with status code 201 and ask a question', (done) => {
       chai.request(app)
-      .get('/api/v1/questions')
+      .post('/api/v1/questions')
       .set('Accept', 'application/json')
       .send(validQuestion)
       .end((err, res) => {
       	if (err) return done(err);
-        expect(res.status).to.equal(200);
+        expect(res.status).to.equal(201);
         expect(res.body.message).to.eql('Question asked successfully');
         done();
       });
@@ -96,7 +96,7 @@ describe('Questioner Server', () => {
 
     it('/api/v1/meetups/<meetup-id>/rsvps should respond with status code 200 and rsvp for an upcoming meetup', (done) => {
       chai.request(app)
-      .get('/api/v1/meetups/1/rsvps')
+      .post('/api/v1/meetups/1/rsvps')
       .set('Accept', 'application/json')
       .send(validRsvp)
       .end((err, res) => {
