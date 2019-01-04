@@ -95,6 +95,34 @@ class MeetupController {
     }
     return res.status(400).json({ errorMessages: validator.getErrors() });
   }
+
+  static rsvpMeetup(req, res) {
+    let { status } = req.body;
+    status = status.toLowerCase();
+    const rsvpStatus = status === 'yes' || status === 'no' || status === 'maybe';
+    const foundMeetup = dummyMeetup.find(meetup => meetup.id === parseInt(req.params.id, 10));
+    if (foundMeetup) {
+      if (rsvpStatus) {
+        const rsvpDetail = {
+          meetupId: foundMeetup.id,
+          topic: foundMeetup.topic,
+          location: foundMeetup.location,
+          status,
+        };
+        return res.status(201).json({
+          status: 201,
+          message: 'Rsvp meetup successful',
+          data: rsvpDetail,
+        });
+      }
+      return res.status(400).json({
+        error: 'Rsvp should be yes, no, or maybe',
+      });
+    }
+    return res.status(404).json({
+      error: 'Meetup not found',
+    });
+  }
 }
 
 export default MeetupController;
