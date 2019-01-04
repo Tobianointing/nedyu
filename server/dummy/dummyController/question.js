@@ -117,6 +117,56 @@ class QuestionController {
       });
     }
   }
+
+  static downVote (req, res) {
+    const { user } = req.body;
+    const fields = {
+      user
+    }
+    const validator = new Validator();
+    validator.validate(fields, 'required|string');
+    if (!validator.hasErrors) {
+      const foundUsername = dummyUser.find(user => user.username === req.body.user);
+      const questionId = parseInt(req.params.id, 10);
+      const foundQuestion = dummyQuestion.find(question => question.id === questionId, 10);
+      if (foundUsername && foundQuestion) {
+        let votes = foundQuestion.votes
+        if (downcount % 2 !== 0) {
+          let totalVote = votes -1;
+          foundQuestion.votes = totalVote;
+          
+          const downVote = '-1'
+          const resDetail = {
+            meetup: foundQuestion.meetup,
+            title: foundQuestion.title,
+            body: foundQuestion.body,
+            votes,
+            downVote,
+            totalVote
+          }
+          downcount += 1;
+          return res.status(200).json({
+            status:200,
+            message: 'Downvote successful',
+            data: resDetail,
+          })
+        } else {
+           return res.status(409).json({
+            status:409,
+            message: 'You can only downvote a question once',
+           })
+        }
+      } else {
+        return res.status(404).json({
+          error: 'User or Question does not exist',
+        });
+      }
+    } else {
+      return res.status(400).json({
+        errorMessages:validator.getErrors()
+      });
+    }
+  }
 }
 
 export default QuestionController;
