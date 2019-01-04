@@ -42,7 +42,6 @@ const mockQuestionDetails =  {
 
 const mockRSVPDetails = {
   validRsvp : {
-    meetupTopic: 'Web Accessibility',
     status: 'yes'
   },
 };
