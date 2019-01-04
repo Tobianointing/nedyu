@@ -3,6 +3,20 @@ import dummyUser from '../dummyModel/dummyUser';
 import Validator from '../_helpers/post_validators';
 
 class MeetupController {
+  
+  static getAllMeetups(req, res) {
+    if (dummyMeetup.length === 0) {
+      return res.status(404).json({
+        status: 404,
+        message: 'No meetup is available',
+      });
+    }
+    return res.status(200).json({
+      status: 200,
+      message: 'Successfully retrieved all meetups',
+      data: dummyMeetup,
+    });
+  }
 
   static getSingleMeetup(req, res) {
     const foundMeetup = dummyMeetup.find(meetup => meetup.id === parseInt(req.params.id, 10));
